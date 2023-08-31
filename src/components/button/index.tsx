@@ -7,7 +7,7 @@ function Button() {
     console.log(r)
     return <div>
         <img src={img} alt="" />
-        <DatePicker></DatePicker >
+        <DatePicker></DatePicker > 
     </div>
 }
 

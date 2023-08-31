@@ -3,7 +3,7 @@ const os = require("os");
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // devserver中终端内容显示
-const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const {FriendlyErrorsWebpackPlugin } = require("@modern-js/friendly-errors-webpack-plugin");
 
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin');
