@@ -31,7 +31,15 @@ const commonConfig = (arg) => {
           test: /\.scss$/,
           use: [
             'style-loader',
-            'css-loader',
+            {
+              loader:'css-loader',
+              options: {
+                importLoaders:1,
+                modules: {
+                  exportLocalsConvention: 'asIs'
+                }
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {
@@ -79,19 +87,22 @@ const commonConfig = (arg) => {
         inject: true,
       }),
       new CleanWebpackPlugin(),
-      new FriendlyErrorsWebpackPlugin({
-        compilationSuccessInfo: {
-          messages: [
-            `Your application is running at http://${localIP}:${port}`,
-          ],
-        },
-      }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名
         // 这俩是终端的错误提示和警告提示的开关
         failOnError: true,
         failOnWarning: false,
         formatter: 'stylish',
+      }),
+      new FriendlyErrorsWebpackPlugin({
+        compilationSuccessInfo: {
+          messages: [
+            `Your application is running at http://${localIP}:${port}`,
+          ],
+          notes: ['Some additionnal notes to be displayed unpon successful compilation']
+        },
+        clearConsole: true,
+        logLevel: true,
       }),
     ],
     resolve: {
