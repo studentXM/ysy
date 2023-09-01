@@ -3,7 +3,7 @@ const os = require("os");
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // devserver中终端内容显示
-const {FriendlyErrorsWebpackPlugin } = require("@modern-js/friendly-errors-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
 
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -31,7 +31,14 @@ const commonConfig = (arg) => {
           test: /\.scss$/,
           use: [
             'style-loader',
-            'css-loader',
+            {
+              loader:'css-loader',
+              options:{
+                modules: {
+                  localIdentName: '[name]__[local]--[hash:base64:5]',
+                },
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {
@@ -80,11 +87,6 @@ const commonConfig = (arg) => {
       }),
       new CleanWebpackPlugin(),
       new FriendlyErrorsWebpackPlugin({
-        compilationSuccessInfo: {
-          messages: [
-            `Your application is running at http://${localIP}:${port}`,
-          ],
-        },
       }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名

@@ -1,12 +1,14 @@
-@keyframes show {
-    from {
-        opacity: 0;
-        transform: translateX(-10%);
-    }
+:global {
+    @keyframes show {
+        from {
+            opacity: 0;
+            transform: translateX(-10%);
+        }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 }
 
@@ -17,4 +19,4 @@
     height: 100px;
     margin-top: calc(50vh - 50px);
     animation: show 500ms;
-} 
+}

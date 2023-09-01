@@ -29,7 +29,7 @@
     "dependencies": {
         "@babel/plugin-transform-react-jsx": "^7.22.5",
         "@babel/polyfill": "^7.12.1",
-        "@modern-js/friendly-errors-webpack-plugin": "^2.33.1",
+        "@soda/friendly-errors-webpack-plugin": "^1.8.1",
         "@types/react-dom": "^18.2.7",
         "@typescript-eslint/eslint-plugin": "^6.3.0",
         "@typescript-eslint/parser": "^6.3.0",
@@ -40,14 +40,16 @@
         "postcss-loader": "^7.3.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "sass": "^1.66.1",
+        "sass-loader": "^13.3.2",
         "scss": "^0.2.4",
         "scss-loader": "^0.0.1",
         "style-loader": "^3.3.3",
         "typescript": "*"
     },
     "scripts": {
-        "dev": "webpack serve --config ./config/webpack.common.js --env development",
-        "prod": "npm run type-check & webpack --config ./config/webpack.common.js --env production",
+        "dev": "webpack serve --config ./config/webpack.common.js --env development && npm run type-check-watch",
+        "prod": "npm run type-check && webpack --config ./config/webpack.common.js --env production",
         "type-check": "tsc --noEmit",
         "type-check-watch": "tsc --noEmit --watch"
     }

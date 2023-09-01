@@ -7,6 +7,7 @@ module.exports = {
   },
   parser: "@typescript-eslint/parser",
   extends: [
+    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -25,7 +26,7 @@ module.exports = {
     "no-unused-vars": "warn",
     "eqeqeq": "off",
     "curly": "error",
-    // "quotes": ["error"]
+    "quotes": ["error"]
   },
   "ignorePatterns": ["webpack.common.js", "webpack.dev.js", "webpack.prod.js"],
 };
