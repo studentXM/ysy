@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_global\node_modules\yarn\bin\yarn.js add typescript-eslint/eslint-plugin
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_global\node_modules\yarn\bin\yarn.js install
 
 PATH: 
   C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\dotnet\;C:\Program Files (x86)\Tencent\微信web开发者工具\dll;%NVM_H;ME%;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Users\Administrator\AppData\Local\pnpm;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\nvm;C:\Program Files\nodejs\node_global;C:\Program Files\MySQL\MySQL Server 8.0\bin
@@ -14,8 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: connect ECONNREFUSED 127.0.0.1:443
-      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1300:16)
+  Error: ENOENT: no such file or directory, lstat 'C:\learning\diy-cli\ysy_cli_template\ysy\node_modules\rimraf'
 
 npm manifest: 
   {
@@ -27,21 +26,19 @@ npm manifest:
       "@babel/core": "^7.17.5",
       "@babel/preset-env": "^7.17.5",
       "@babel/preset-typescript": "^7.17.5",
-      "@modern-js/friendly-errors-webpack-plugin": "^2.32.1",
       "@types/react": "^18.2.20",
       "autoprefixer": "^10.4.14",
       "clean-webpack-plugin": "^4.0.0",
       "core-js": "^3.2.0",
       "css-loader": "^6.8.1",
       "eslint": "^8.0.1",
+      "eslint-config-standard-with-typescript": "^37.0.0",
       "eslint-plugin-import": "^2.25.2",
       "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
       "eslint-plugin-promise": "^6.0.0",
       "eslint-plugin-react": "^7.33.1",
       "eslint-plugin-react-hooks": "^4.6.0",
       "eslint-webpack-plugin": "^4.0.1",
-      "sass": "^1.65.1",
-      "sass-loader": "^13.3.2",
       "webpack": "^5.5.2",
       "webpack-cli": "^5.0.1",
       "webpack-dev-server": "^4.13.2",
@@ -50,14 +47,15 @@ npm manifest:
     "dependencies": {
       "@babel/plugin-transform-react-jsx": "^7.22.5",
       "@babel/polyfill": "^7.12.1",
+      "@modern-js/friendly-errors-webpack-plugin": "^2.33.1",
+      "@nuxtjs/friendly-errors-webpack-plugin": "^2.1.0",
       "@types/react-dom": "^18.2.7",
+      "@typescript-eslint/eslint-plugin": "^6.3.0",
       "@typescript-eslint/parser": "^6.3.0",
       "antd": "^5.8.3",
       "babel-loader": "^9.1.3",
-      "eslint-config-standard-with-typescript": "^39.0.0",
       "html-entities": "^2.4.0",
       "html-webpack-plugin": "^5.5.3",
-      "postcss": "^8.4.29",
       "postcss-loader": "^7.3.3",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
@@ -67,10 +65,10 @@ npm manifest:
       "typescript": "*"
     },
     "scripts": {
-      "dev": "npm run type-check-watch & webpack serve --config ./config/webpack.common.js --env development",
+      "dev": "webpack serve --config ./config/webpack.common.js --env development",
       "prod": "npm run type-check & webpack --config ./config/webpack.common.js --env production",
       "type-check": "tsc --noEmit",
-      "type-check-watch": "tsc --noEmit --watch > /dev/null"
+      "type-check-watch": "tsc --noEmit --watch"
     }
   }
 
@@ -1148,6 +1146,11 @@ Lockfile:
     dependencies:
       eslint-visitor-keys "^3.3.0"
   
+  "@eslint-community/regexpp@^4.5.1":
+    version "4.8.0"
+    resolved "https://registry.npmmirror.com/@eslint-community/regexpp/-/regexpp-4.8.0.tgz#11195513186f68d42fbf449f9a7136b2c0c92005"
+    integrity sha512-JylOEEzDiOryeUnFbQz+oViCXS0KsvR1mvHkoMiu5+UiBvy+RYX7tzlIIIEstF/gVa2tj9AQXk3dgnxv6KxhFg==
+  
   "@eslint-community/regexpp@^4.6.0", "@eslint-community/regexpp@^4.6.1":
     version "4.6.2"
     resolved "https://registry.npmmirror.com/@eslint-community/regexpp/-/regexpp-4.6.2.tgz#1816b5f6948029c5eaacb0703b850ee0cb37d8f8"
@@ -1256,18 +1259,18 @@ Lockfile:
     resolved "https://registry.npmmirror.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
     integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
   
-  "@modern-js/friendly-errors-webpack-plugin@^2.32.1":
-    version "2.32.1"
-    resolved "https://registry.npmmirror.com/@modern-js/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-2.32.1.tgz#ddfa51e37ed6ccd93fba05b6dcc879ed0495b9fb"
-    integrity sha512-M6nToRWtcOMIy9OE3hjJZQ0yiY8q1vS2K1gxaw3DZanWGgPoyLdJzpxlnRxljBXaca4C7EKuy0ZzyVuEA3AbWg==
+  "@modern-js/friendly-errors-webpack-plugin@^2.33.1":
+    version "2.33.1"
+    resolved "https://registry.yarnpkg.com/@modern-js/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-2.33.1.tgz#e0d94408d8d8e9b4ab70db8ea4be315c69736bc4"
+    integrity sha512-ApP16nlsX5r1MTUOKIhbB+YbWFstWor2e05BzAtjyUEgWuNToBkXbu54c/VME81NrYNsTMjgNwJY1e6b2PVcpQ==
     dependencies:
-      "@modern-js/utils" "2.32.1"
+      "@modern-js/utils" "2.33.1"
       "@swc/helpers" "0.5.1"
   
-  "@modern-js/utils@2.32.1":
-    version "2.32.1"
-    resolved "https://registry.npmmirror.com/@modern-js/utils/-/utils-2.32.1.tgz#aeafe095f58c55a71840d84a9e15cd7af533623e"
-    integrity sha512-vUzPMMebXkulCmw1Vd7sbyZswrsA6nBQ7woGul2M4DHzPa0wawANNsfLVK/iyeiu+KIe0yrmwjyYm9KZe8UzEw==
+  "@modern-js/utils@2.33.1":
+    version "2.33.1"
+    resolved "https://registry.yarnpkg.com/@modern-js/utils/-/utils-2.33.1.tgz#06004eee6c8c75dc347a0d0281f7c4eb67db6bb7"
+    integrity sha512-lgo7IgMeN/usDpi+t82kccOvFb33NnOZIv+kTraxsK+mOz1vBSeVleGR7E9m3FM9e4lnwTfRI4H4GYLjox4Mdg==
     dependencies:
       "@remix-run/router" "1.6.1"
       "@swc/helpers" "0.5.1"
@@ -1296,6 +1299,16 @@ Lockfile:
     dependencies:
       "@nodelib/fs.scandir" "2.1.5"
       fastq "^1.6.0"
+  
+  "@nuxtjs/friendly-errors-webpack-plugin@^2.1.0":
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/@nuxtjs/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-2.1.0.tgz#90d0b587b2f118f7f54e3da3d79329ffc72a8578"
+    integrity sha512-FI8uTmMeA+xnPIfiLFwq3aZ4PzIdTRN5uw9oa7JHPtB1DM9WgiJeJTBLEzz16yIuDrjRAMOim1BQK3bOOhKANg==
+    dependencies:
+      chalk "^2.3.2"
+      error-stack-parser "^2.0.0"
+      string-width "^2.0.0"
+      strip-ansi "^4.0.0"
   
   "@rc-component/color-picker@~1.4.0":
     version "1.4.1"
@@ -1366,7 +1379,7 @@ Lockfile:
   
   "@remix-run/router@1.6.1":
     version "1.6.1"
-    resolved "https://registry.npmmirror.com/@remix-run/router/-/router-1.6.1.tgz#3a3a408481a3796f45223a549c2571517bc8af2d"
+    resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.6.1.tgz#3a3a408481a3796f45223a549c2571517bc8af2d"
     integrity sha512-YUkWj+xs0oOzBe74OgErsuR3wVn+efrFhXBWrit50kOiED+pvQe2r6MWY0iJMQU/mSVKxvNzL4ZaYvjdX+G7ZA==
   
   "@sinclair/typebox@^0.27.8":
@@ -1376,7 +1389,7 @@ Lockfile:
   
   "@swc/helpers@0.5.1":
     version "0.5.1"
-    resolved "https://registry.npmmirror.com/@swc/helpers/-/helpers-0.5.1.tgz#e9031491aa3f26bfcc974a67f48bd456c8a5357a"
+    resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.1.tgz#e9031491aa3f26bfcc974a67f48bd456c8a5357a"
     integrity sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==
     dependencies:
       tslib "^2.4.0"
@@ -1496,7 +1509,7 @@ Lockfile:
     dependencies:
       "@types/istanbul-lib-report" "*"
   
-  "@types/json-schema@*", "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
+  "@types/json-schema@*", "@types/json-schema@^7.0.12", "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
     version "7.0.12"
     resolved "https://registry.npmmirror.com/@types/json-schema/-/json-schema-7.0.12.tgz#d70faba7039d5fca54c83c7dbab41051d2b6f6cb"
     integrity sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==
@@ -1567,6 +1580,11 @@ Lockfile:
     resolved "https://registry.npmmirror.com/@types/scheduler/-/scheduler-0.16.3.tgz#cef09e3ec9af1d63d2a6cc5b383a737e24e6dcf5"
     integrity sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==
   
+  "@types/semver@^7.5.0":
+    version "7.5.1"
+    resolved "https://registry.npmmirror.com/@types/semver/-/semver-7.5.1.tgz#0480eeb7221eb9bc398ad7432c9d7e14b1a5a367"
+    integrity sha512-cJRQXpObxfNKkFAZbJl2yjWtJCqELQIdShsogr1d2MilP8dKD9TE/nEKHkJgUNHdGKCQaf9HbIynuV2csLGVLg==
+  
   "@types/send@*":
     version "0.17.1"
     resolved "https://registry.npmmirror.com/@types/send/-/send-0.17.1.tgz#ed4932b8a2a805f1fe362a70f4e62d0ac994e301"
@@ -1617,6 +1635,33 @@ Lockfile:
     dependencies:
       "@types/yargs-parser" "*"
   
+  "@typescript-eslint/eslint-plugin@^6.3.0":
+    version "6.5.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.5.0.tgz#5cee33edf0d45d5ec773e3b3111206b098ac8599"
+    integrity sha512-2pktILyjvMaScU6iK3925uvGU87E+N9rh372uGZgiMYwafaw9SXq86U04XPq3UH6tzRvNgBsub6x2DacHc33lw==
+    dependencies:
+      "@eslint-community/regexpp" "^4.5.1"
+      "@typescript-eslint/scope-manager" "6.5.0"
+      "@typescript-eslint/type-utils" "6.5.0"
+      "@typescript-eslint/utils" "6.5.0"
+      "@typescript-eslint/visitor-keys" "6.5.0"
+      debug "^4.3.4"
+      graphemer "^1.4.0"
+      ignore "^5.2.4"
+      natural-compare "^1.4.0"
+      semver "^7.5.4"
+      ts-api-utils "^1.0.1"
+  
+  "@typescript-eslint/parser@^5.52.0":
+    version "5.62.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.62.0.tgz#1b63d082d849a2fcae8a569248fbe2ee1b8a56c7"
+    integrity sha512-VlJEV0fOQ7BExOsHYAGrgbEiZoi8D+Bl2+f6V2RrXerRSylnp+ZBHmPvaIa8cz0Ajx7WO7Z5RqfgYg7ED1nRhA==
+    dependencies:
+      "@typescript-eslint/scope-manager" "5.62.0"
+      "@typescript-eslint/types" "5.62.0"
+      "@typescript-eslint/typescript-estree" "5.62.0"
+      debug "^4.3.4"
+  
   "@typescript-eslint/parser@^6.3.0":
     version "6.3.0"
     resolved "https://registry.npmmirror.com/@typescript-eslint/parser/-/parser-6.3.0.tgz#359684c443f4f848db3c4f14674f544f169c8f46"
@@ -1628,16 +1673,13 @@ Lockfile:
       "@typescript-eslint/visitor-keys" "6.3.0"
       debug "^4.3.4"
   
-  "@typescript-eslint/parser@^6.4.0":
-    version "6.5.0"
-    resolved "https://registry.npmmirror.com/@typescript-eslint/parser/-/parser-6.5.0.tgz#3d6ed231c5e307c5f5f4a0d86893ec01e92b8c77"
-    integrity sha512-LMAVtR5GN8nY0G0BadkG0XIe4AcNMeyEy3DyhKGAh9k4pLSMBO7rF29JvDBpZGCmp5Pgz5RLHP6eCpSYZJQDuQ==
+  "@typescript-eslint/scope-manager@5.62.0":
+    version "5.62.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.62.0.tgz#d9457ccc6a0b8d6b37d0eb252a23022478c5460c"
+    integrity sha512-VXuvVvZeQCQb5Zgf4HAxc04q5j+WrNAtNh9OwCsCgpKqESMTu3tF/jhZ3xG6T4NZwWl65Bg8KuS2uEvhSfLl0w==
     dependencies:
-      "@typescript-eslint/scope-manager" "6.5.0"
-      "@typescript-eslint/types" "6.5.0"
-      "@typescript-eslint/typescript-estree" "6.5.0"
-      "@typescript-eslint/visitor-keys" "6.5.0"
-      debug "^4.3.4"
+      "@typescript-eslint/types" "5.62.0"
+      "@typescript-eslint/visitor-keys" "5.62.0"
   
   "@typescript-eslint/scope-manager@6.3.0":
     version "6.3.0"
@@ -1655,6 +1697,21 @@ Lockfile:
       "@typescript-eslint/types" "6.5.0"
       "@typescript-eslint/visitor-keys" "6.5.0"
   
+  "@typescript-eslint/type-utils@6.5.0":
+    version "6.5.0"
+    resolved "https://registry.npmmirror.com/@typescript-eslint/type-utils/-/type-utils-6.5.0.tgz#6d246c93739282bc0d2e623f28d0dec6cfcc38d7"
+    integrity sha512-f7OcZOkRivtujIBQ4yrJNIuwyCQO1OjocVqntl9dgSIZAdKqicj3xFDqDOzHDlGCZX990LqhLQXWRnQvsapq8A==
+    dependencies:
+      "@typescript-eslint/typescript-estree" "6.5.0"
+      "@typescript-eslint/utils" "6.5.0"
+      debug "^4.3.4"
+      ts-api-utils "^1.0.1"
+  
+  "@typescript-eslint/types@5.62.0":
+    version "5.62.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.62.0.tgz#258607e60effa309f067608931c3df6fed41fd2f"
+    integrity sha512-87NVngcbVXUahrRTqIK27gD2t5Cu1yuCXxbLcFtCzZGlfyVWWh8mLHkoxzjsB6DDNnvdL+fW8MiwPEJyGJQDgQ==
+  
   "@typescript-eslint/types@6.3.0":
     version "6.3.0"
     resolved "https://registry.npmmirror.com/@typescript-eslint/types/-/types-6.3.0.tgz#84517f1427923e714b8418981e493b6635ab4c9d"
@@ -1664,6 +1721,19 @@ Lockfile:
     version "6.5.0"
     resolved "https://registry.npmmirror.com/@typescript-eslint/types/-/types-6.5.0.tgz#f4e55cfd99ac5346ea772770bf212a3e689a8f04"
     integrity sha512-eqLLOEF5/lU8jW3Bw+8auf4lZSbbljHR2saKnYqON12G/WsJrGeeDHWuQePoEf9ro22+JkbPfWQwKEC5WwLQ3w==
+  
+  "@typescript-eslint/typescript-estree@5.62.0":
+    version "5.62.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-5.62.0.tgz#7d17794b77fabcac615d6a48fb143330d962eb9b"
+    integrity sha512-CmcQ6uY7b9y694lKdRB8FEel7JbU/40iSAPomu++SjLMntB+2Leay2LO6i8VnJk58MtE9/nQSFIH6jpyRWyYzA==
+    dependencies:
+      "@typescript-eslint/types" "5.62.0"
+      "@typescript-eslint/visitor-keys" "5.62.0"
+      debug "^4.3.4"
+      globby "^11.1.0"
+      is-glob "^4.0.3"
+      semver "^7.3.7"
+      tsutils "^3.21.0"
   
   "@typescript-eslint/typescript-estree@6.3.0":
     version "6.3.0"
@@ -1690,6 +1760,27 @@ Lockfile:
       is-glob "^4.0.3"
       semver "^7.5.4"
       ts-api-utils "^1.0.1"
+  
+  "@typescript-eslint/utils@6.5.0":
+    version "6.5.0"
+    resolved "https://registry.npmmirror.com/@typescript-eslint/utils/-/utils-6.5.0.tgz#6668bee4f7f24978b11df8a2ea42d56eebc4662c"
+    integrity sha512-9nqtjkNykFzeVtt9Pj6lyR9WEdd8npPhhIPM992FWVkZuS6tmxHfGVnlUcjpUP2hv8r4w35nT33mlxd+Be1ACQ==
+    dependencies:
+      "@eslint-community/eslint-utils" "^4.4.0"
+      "@types/json-schema" "^7.0.12"
+      "@types/semver" "^7.5.0"
+      "@typescript-eslint/scope-manager" "6.5.0"
+      "@typescript-eslint/types" "6.5.0"
+      "@typescript-eslint/typescript-estree" "6.5.0"
+      semver "^7.5.4"
+  
+  "@typescript-eslint/visitor-keys@5.62.0":
+    version "5.62.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-5.62.0.tgz#2174011917ce582875954ffe2f6912d5931e353e"
+    integrity sha512-07ny+LHRzQXepkGg6w0mFY41fVUNBrL2Roj/++7V1txKugfjm/Ci/qSND03r2RhlJhJYMcTn9AhhSSqQp0Ysyw==
+    dependencies:
+      "@typescript-eslint/types" "5.62.0"
+      eslint-visitor-keys "^3.3.0"
   
   "@typescript-eslint/visitor-keys@6.3.0":
     version "6.3.0"
@@ -1919,6 +2010,11 @@ Lockfile:
     version "0.0.8"
     resolved "https://registry.npmmirror.com/ansi-html-community/-/ansi-html-community-0.0.8.tgz#69fbc4d6ccbe383f9736934ae34c3f8290f1bf41"
     integrity sha512-1APHAyr3+PCamwNw3bXCPp4HFLONZt/yIH0sZp0/469KWNTEy+qN5jQ3GVX6DMZ1UXAi34yVwtTeaG/HpBuuzw==
+  
+  ansi-regex@^3.0.0:
+    version "3.0.1"
+    resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-3.0.1.tgz#123d6479e92ad45ad897d4054e3c7ca7db4944e1"
+    integrity sha512-+O9Jct8wf++lXxxFc4hc8LsjaSq0HFzzL7cVsw8pRDIPdjKD2mT4ytDZlLuSBZ4cLKZFXIrMGO7DbQCtMJJMKw==
   
   ansi-regex@^5.0.1:
     version "5.0.1"
@@ -2287,13 +2383,13 @@ Lockfile:
     integrity sha512-0QHgqR+Jv4bxHMp8kZ1Kn8CH55OikjKJ6JmKkZYP1F3D7w+lnFXF70nG5eNfsZS89jadi5Ywy5UCSKLAglIRkg==
   
   caniuse-lite@^1.0.30001520:
-    version "1.0.30001524"
-    resolved "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001524.tgz#1e14bce4f43c41a7deaeb5ebfe86664fe8dadb80"
-    integrity sha512-Jj917pJtYg9HSJBF95HVX3Cdr89JUyLT4IZ8SvM5aDRni95swKgYi3TgYLH5hnGfPE/U1dg6IfZ50UsIlLkwSA==
+    version "1.0.30001525"
+    resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001525.tgz#d2e8fdec6116ffa36284ca2c33ef6d53612fe1c8"
+    integrity sha512-/3z+wB4icFt3r0USMwxujAqRvaD/B7rvGTsKhbhSQErVrJvkZCLhgNLJxU8MevahQVH6hCU9FsHdNUFbiwmE7Q==
   
-  chalk@^2.4.2:
+  chalk@^2.3.2, chalk@^2.4.2:
     version "2.4.2"
-    resolved "https://registry.npmmirror.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
+    resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
     integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
     dependencies:
       ansi-styles "^3.2.1"
@@ -2767,6 +2863,13 @@ Lockfile:
     dependencies:
       is-arrayish "^0.2.1"
   
+  error-stack-parser@^2.0.0:
+    version "2.1.4"
+    resolved "https://registry.yarnpkg.com/error-stack-parser/-/error-stack-parser-2.1.4.tgz#229cb01cdbfa84440bfa91876285b94680188286"
+    integrity sha512-Sk5V6wVazPhq5MhpO+AUxJn5x7XSXGl1R93Vn7i+zS15KDVxQijejNCrz8340/2bgLBjR9GtEG8ZVKONDjcqGQ==
+    dependencies:
+      stackframe "^1.3.4"
+  
   es-abstract@^1.19.0, es-abstract@^1.20.4, es-abstract@^1.21.2:
     version "1.22.1"
     resolved "https://registry.npmmirror.com/es-abstract/-/es-abstract-1.22.1.tgz#8b4e5fc5cefd7f1660f0f8e1a52900dfbc9d9ccc"
@@ -2862,12 +2965,12 @@ Lockfile:
     resolved "https://registry.npmmirror.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
     integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
   
-  eslint-config-standard-with-typescript@^39.0.0:
-    version "39.0.0"
-    resolved "https://registry.npmmirror.com/eslint-config-standard-with-typescript/-/eslint-config-standard-with-typescript-39.0.0.tgz#310847a474298cd64a8664a1d5b5434fb30e37b9"
-    integrity sha512-CiV2LS4NUeeRmDTDf1ocUMpMxitSyW0g+Y/N7ecElwGj188GahbcQgqfBNyVsIXQxHlZVBlOjkbg3oUI0R3KBg==
+  eslint-config-standard-with-typescript@^37.0.0:
+    version "37.0.0"
+    resolved "https://registry.yarnpkg.com/eslint-config-standard-with-typescript/-/eslint-config-standard-with-typescript-37.0.0.tgz#2c3b64f98ed46c9e10f93ee9822f3dbb211fa1a0"
+    integrity sha512-V8I/Q1eFf9tiOuFHkbksUdWO3p1crFmewecfBtRxXdnvb71BCJx+1xAknlIRZMwZioMX3/bPtMVCZsf1+AjjOw==
     dependencies:
-      "@typescript-eslint/parser" "^6.4.0"
+      "@typescript-eslint/parser" "^5.52.0"
       eslint-config-standard "17.1.0"
   
   eslint-config-standard@17.1.0:
@@ -3624,9 +3727,9 @@ Lockfile:
     integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
   
   immutable@^4.0.0:
-    version "4.3.2"
-    resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.2.tgz#f89d910f8dfb6e15c03b2cae2faaf8c1f66455fe"
-    integrity sha512-oGXzbEDem9OOpDWZu88jGiYCvIsLHMvGw+8OXlpsvTFvIQplQbjg1B1cvKg8f7Hoch6+NGjpPsH1Fr+Mc2D1aA==
+    version "4.3.4"
+    resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.4.tgz#2e07b33837b4bb7662f288c244d1ced1ef65a78f"
+    integrity sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==
   
   import-fresh@^3.2.1:
     version "3.3.0"
@@ -3755,6 +3858,11 @@ Lockfile:
     version "2.1.1"
     resolved "https://registry.npmmirror.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
     integrity sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==
+  
+  is-fullwidth-code-point@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
+    integrity sha512-VHskAKYM8RfSFXwee5t5cbN5PZeq1Wrh6qd5bkyiXIf6UQcN6w/A0eXM9r6t8d+GYOh+o6ZhiEnb88LN/Y8m2w==
   
   is-glob@^4.0.0, is-glob@^4.0.1, is-glob@^4.0.3, is-glob@~4.0.1:
     version "4.0.3"
@@ -4632,15 +4740,6 @@ Lockfile:
       picocolors "^1.0.0"
       source-map-js "^1.0.2"
   
-  postcss@^8.4.29:
-    version "8.4.29"
-    resolved "https://registry.npmmirror.com/postcss/-/postcss-8.4.29.tgz#33bc121cf3b3688d4ddef50be869b2a54185a1dd"
-    integrity sha512-cbI+jaqIeu/VGqXEarWkRCCffhjgXc0qjBtXpqJhTBohMUjUQnbBr0xqX3vEKudc4iviTewcJo5ajcec5+wdJw==
-    dependencies:
-      nanoid "^3.3.6"
-      picocolors "^1.0.0"
-      source-map-js "^1.0.2"
-  
   prelude-ls@^1.2.1:
     version "1.2.1"
     resolved "https://registry.npmmirror.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
@@ -5094,7 +5193,7 @@ Lockfile:
   
   react-router-dom@6.11.1:
     version "6.11.1"
-    resolved "https://registry.npmmirror.com/react-router-dom/-/react-router-dom-6.11.1.tgz#af226bae950deb437208a606a47cf5c2d72c55dc"
+    resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.11.1.tgz#af226bae950deb437208a606a47cf5c2d72c55dc"
     integrity sha512-dPC2MhoPeTQ1YUOt5uIK376SMNWbwUxYRWk2ZmTT4fZfwlOvabF8uduRKKJIyfkCZvMgiF0GSCQckmkGGijIrg==
     dependencies:
       "@remix-run/router" "1.6.1"
@@ -5102,7 +5201,7 @@ Lockfile:
   
   react-router@6.11.1:
     version "6.11.1"
-    resolved "https://registry.npmmirror.com/react-router/-/react-router-6.11.1.tgz#6e58458c03e16834dda2b433c6adb9e7c2b1d7a8"
+    resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.11.1.tgz#6e58458c03e16834dda2b433c6adb9e7c2b1d7a8"
     integrity sha512-OZINSdjJ2WgvAi7hgNLazrEV8SGn6xrKA+MkJe9wVDMZ3zQ6fdJocUjpCUCI0cNrelWjcvon0S/QK/j0NzL3KA==
     dependencies:
       "@remix-run/router" "1.6.1"
@@ -5345,10 +5444,10 @@ Lockfile:
     dependencies:
       neo-async "^2.6.2"
   
-  sass@^1.65.1:
-    version "1.65.1"
-    resolved "https://registry.yarnpkg.com/sass/-/sass-1.65.1.tgz#8f283b0c26335a88246a448d22e1342ba2ea1432"
-    integrity sha512-9DINwtHmA41SEd36eVPQ9BJKpn7eKDQmUHmpI0y5Zv2Rcorrh0zS+cFrt050hdNbmmCNKTW3hV5mWfuegNRsEA==
+  sass@^1.66.1:
+    version "1.66.1"
+    resolved "https://registry.yarnpkg.com/sass/-/sass-1.66.1.tgz#04b51c4671e4650aa393740e66a4e58b44d055b1"
+    integrity sha512-50c+zTsZOJVgFfTgwwEzkjA3/QACgdNsKueWPyAR0mRINIvLAStVQBbPg14iuqEQ74NPDbXzJARJ/O4SI1zftA==
     dependencies:
       chokidar ">=3.0.0 <4.0.0"
       immutable "^4.0.0"
@@ -5416,7 +5515,7 @@ Lockfile:
     resolved "https://registry.npmmirror.com/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
     integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
   
-  semver@^7.0.0, semver@^7.3.8, semver@^7.5.3, semver@^7.5.4:
+  semver@^7.0.0, semver@^7.3.7, semver@^7.3.8, semver@^7.5.3, semver@^7.5.4:
     version "7.5.4"
     resolved "https://registry.npmmirror.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
     integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
@@ -5575,6 +5674,11 @@ Lockfile:
       select-hose "^2.0.0"
       spdy-transport "^3.0.0"
   
+  stackframe@^1.3.4:
+    version "1.3.4"
+    resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.3.4.tgz#b881a004c8c149a5e8efef37d51b16e412943310"
+    integrity sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==
+  
   statuses@2.0.1:
     version "2.0.1"
     resolved "https://registry.npmmirror.com/statuses/-/statuses-2.0.1.tgz#55cb000ccf1d48728bd23c685a063998cf1a1b63"
@@ -5589,6 +5693,14 @@ Lockfile:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/string-convert/-/string-convert-0.2.1.tgz#6982cc3049fbb4cd85f8b24568b9d9bf39eeff97"
     integrity sha512-u/1tdPl4yQnPBjnVrmdLo9gtuLvELKsAoRapekWggdiQNvvvum+jYF329d84NAa660KQw7pB2n36KrIKVoXa3A==
+  
+  string-width@^2.0.0:
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/string-width/-/string-width-2.1.1.tgz#ab93f27a8dc13d28cac815c462143a6d9012ae9e"
+    integrity sha512-nOqH59deCq9SRHlxq1Aw85Jnt4w6KvLKqWVik6oA9ZklXLNIOlqg4F2yrT1MVaTjAqvVwdfeZ7w7aCvJD7ugkw==
+    dependencies:
+      is-fullwidth-code-point "^2.0.0"
+      strip-ansi "^4.0.0"
   
   string.prototype.matchall@^4.0.8:
     version "4.0.8"
@@ -5644,6 +5756,13 @@ Lockfile:
     integrity sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==
     dependencies:
       safe-buffer "~5.1.0"
+  
+  strip-ansi@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
+    integrity sha512-4XaJ2zQdCzROZDivEVIDPkcQn8LMFSa8kj8Gxb/Lnwzv9A8VctNZ+lfivC/sV3ivW8ElJTERXZoPBRrZKkNKow==
+    dependencies:
+      ansi-regex "^3.0.0"
   
   strip-ansi@^6.0.1:
     version "6.0.1"
@@ -5781,6 +5900,11 @@ Lockfile:
       minimist "^1.2.6"
       strip-bom "^3.0.0"
   
+  tslib@^1.8.1:
+    version "1.14.1"
+    resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
+    integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+  
   tslib@^2.0.3:
     version "2.6.1"
     resolved "https://registry.npmmirror.com/tslib/-/tslib-2.6.1.tgz#fd8c9a0ff42590b25703c0acb3de3d3f4ede0410"
@@ -5788,8 +5912,15 @@ Lockfile:
   
   tslib@^2.4.0:
     version "2.6.2"
-    resolved "https://registry.npmmirror.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
+    resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
     integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
+  
+  tsutils@^3.21.0:
+    version "3.21.0"
+    resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.21.0.tgz#b48717d394cea6c1e096983eed58e9d61715b623"
+    integrity sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==
+    dependencies:
+      tslib "^1.8.1"
   
   type-check@^0.4.0, type-check@~0.4.0:
     version "0.4.0"
