@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "noEmit": true, // 防止编译器生成输出文件
+    "strict": true,  // 启用所有严格类型检查选项
     "jsx": "react-jsx",
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */

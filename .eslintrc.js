@@ -19,7 +19,7 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: "module",
   },
-  plugins: ["react", "react-hooks", "@typescript-eslint"],
+  plugins: ["@typescript-eslint","react", "react-hooks"],
   rules: {
     // 重新配置 react-hooks 相关内容
     "react-hooks/rules-of-hooks": "error",

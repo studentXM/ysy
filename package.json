@@ -51,6 +51,7 @@
         "dev": "webpack serve --config ./config/webpack.common.js --env development && npm run type-check-watch",
         "prod": "npm run type-check && webpack --config ./config/webpack.common.js --env production",
         "type-check": "tsc --noEmit",
-        "type-check-watch": "tsc --noEmit --watch"
+        "type-check-watch": "tsc --noEmit --watch",
+        "lint": "eslint src --ext .js,.ts"
     }
 }

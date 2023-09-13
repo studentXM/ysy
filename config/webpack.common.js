@@ -86,8 +86,8 @@ const commonConfig = (arg) => {
         inject: true,
       }),
       new CleanWebpackPlugin(),
-      new FriendlyErrorsWebpackPlugin({
-      }),
+      // new FriendlyErrorsWebpackPlugin({
+      // }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名
         // 这俩是终端的错误提示和警告提示的开关
