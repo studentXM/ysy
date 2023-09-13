@@ -2,17 +2,15 @@ const path = require("path");
 const os = require("os");
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// devserver中终端内容显示
-const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
-
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin');
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const AddressOnSuccessPlugin = require("./plugins/AddressOnSuccessPlugin")
+const prot = 8080
 const commonConfig = (arg) => {
   const localIP = getLocalIP();
-  const port = arg.port || 8080;
+  const port = arg.port || prot;
   return {
     // 入口使用相对路径
     entry: "./src/index.tsx",
@@ -73,7 +71,7 @@ const commonConfig = (arg) => {
           use: {
             loader: "babel-loader", // 使用babel-loader进行转换
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-typescript"],
+              presets: [["@babel/preset-env", { targets: "defaults" }], "@babel/preset-typescript"],
             },
           },
         },
@@ -86,15 +84,15 @@ const commonConfig = (arg) => {
         inject: true,
       }),
       new CleanWebpackPlugin(),
-      // new FriendlyErrorsWebpackPlugin({
-      // }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名
-        // 这俩是终端的错误提示和警告提示的开关
-        failOnError: true,
-        failOnWarning: false,
-        formatter: 'stylish',
       }),
+      new ForkTsCheckerWebpackPlugin({
+        async: false
+      }),
+      new AddressOnSuccessPlugin({
+        address:`${getLocalIP()}:${prot}`
+      })
     ],
     resolve: {
       extensions: [".js", ".ts", ".tsx", "css", "scss"], // 添加.ts扩展名
