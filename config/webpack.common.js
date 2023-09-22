@@ -1,12 +1,12 @@
 const path = require("path");
-const os = require("os");
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const AddressOnSuccessPlugin = require("./plugins/AddressOnSuccessPlugin")
+const getLocalIP = require('./plugins/ip')
 const prot = 8080
 const commonConfig = (arg) => {
   const localIP = getLocalIP();
@@ -30,8 +30,8 @@ const commonConfig = (arg) => {
           use: [
             'style-loader',
             {
-              loader:'css-loader',
-              options:{
+              loader: 'css-loader',
+              options: {
                 modules: {
                   localIdentName: '[name]__[local]--[hash:base64:5]',
                 },
@@ -51,19 +51,22 @@ const commonConfig = (arg) => {
           ]
         },
         {
-          test: /\.(png|jpg|jpeg|gif|svg)$/,
-          type: 'asset/resource'
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[name]__[local]--[hash:base64:5]',
+                },
+              }
+            },
+          ]
         },
         {
-          test: /\.js$/,
-          //使用exclude排除 该文件夹
-          exclude: "/node_modules/",
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: [["@babel/preset-env", { targets: "defaults" }]],
-            },
-          },
+          test: /\.(png|jpg|jpeg|gif|svg)$/,
+          type: 'asset/resource'
         },
         {
           test: /\.(ts|tsx)$/, // 匹配.ts文件
@@ -78,20 +81,22 @@ const commonConfig = (arg) => {
       ],
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: "ysy",
         template: "./public/index.html",
         inject: true,
       }),
-      new CleanWebpackPlugin(),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名
       }),
       new ForkTsCheckerWebpackPlugin({
         async: false
       }),
-      new AddressOnSuccessPlugin({
-        address:`${getLocalIP()}:${prot}`
+      new FriendlyErrorsWebpackPlugin({
+        compilationSuccessInfo: {
+          messages: [`You application is running here http://${localIP}:${port}`],
+        },
       })
     ],
     resolve: {
@@ -104,19 +109,7 @@ const commonConfig = (arg) => {
   };
 };
 
-// 获取本地IP地址
-function getLocalIP() {
-  const networkInterfaces = os.networkInterfaces();
-  for (const interfaceName in networkInterfaces) {
-    const interfaces = networkInterfaces[interfaceName];
-    for (const iface of interfaces) {
-      if (iface.family === "IPv4" && !iface.internal) {
-        return iface.address;
-      }
-    }
-  }
-  return "localhost";
-}
+
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const prodConfig = require("./webpack.prod");
