@@ -24,8 +24,7 @@ const commonConfig = (arg) => {
       clean: true,
       // 出口必须是绝对路径 所以需要使用 node的path模块
       path: path.resolve(__dirname, "../build"),
-      // 这是按打包后的目录看的
-      publicPath: "./",
+      publicPath: (process.env.NODE_ENV === 'production'?'./':''),
     },
     stats: "minimal",
     module: {
