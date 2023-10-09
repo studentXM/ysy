@@ -5,6 +5,13 @@ const dev = (arg) => {
     mode: "development",
     devtool: "inline-source-map",
     devServer: {
+      // 页面输出错误 不输出警告
+      client: {
+        overlay: {
+          errors: true,
+          warnings: false,
+        },
+      },
       historyApiFallback: true,//该配置影响react-router的路由刷新
       proxy: {
         '/api': {
