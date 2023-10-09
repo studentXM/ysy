@@ -4,8 +4,9 @@ const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const env = require('./plugins/env')
+
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -23,7 +24,8 @@ const commonConfig = (arg) => {
       clean: true,
       // 出口必须是绝对路径 所以需要使用 node的path模块
       path: path.resolve(__dirname, "../build"),
-      publicPath: "",
+      // 这是按打包后的目录看的
+      publicPath: "./",
     },
     stats: "minimal",
     module: {
@@ -89,6 +91,14 @@ const commonConfig = (arg) => {
         title: "ysy",
         template: "./public/index.html",
         inject: true,
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: 'public/assets',
+            to: 'assets', // 这是复制到输出目录的文件夹名称
+          },
+        ],
       }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名
