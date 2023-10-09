@@ -1,8 +1,11 @@
 const path = require("path");
+const webpack = require('webpack');
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const dotenv = require('dotenv');
+const env = dotenv.config().parsed;
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -20,7 +23,7 @@ const commonConfig = (arg) => {
       clean: true,
       // 出口必须是绝对路径 所以需要使用 node的path模块
       path: path.resolve(__dirname, "../build"),
-      publicPath: "/",
+      publicPath: "",
     },
     stats: "minimal",
     module: {
@@ -89,6 +92,9 @@ const commonConfig = (arg) => {
       }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名
+      }),
+      new webpack.DefinePlugin({
+        'process.env': JSON.stringify(env),
       }),
       new ForkTsCheckerWebpackPlugin({
         async: false
