@@ -28,7 +28,8 @@ module.exports = {
     "curly": "error",
     "quotes": ["error"],
   },
-  "ignorePatterns": ["webpack.common.js", "webpack.dev.js", "webpack.prod.js"],
+  // 忽略检查的文件
+  "ignorePatterns": ["webpack.common.js", "webpack.dev.js", "webpack.prod.js","config/plugins/env.js"],
   "settings": {
     "react": {
       "createClass": "createReactClass", // Regex for Component Factory to use,

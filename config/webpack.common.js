@@ -4,8 +4,8 @@ const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const dotenv = require('dotenv');
-const env = dotenv.config().parsed;
+
+const env = require('./plugins/env')
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
